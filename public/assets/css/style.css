@@ -1,0 +1,262 @@
+body {
+    width: 100%;
+    height: 100%;
+    /* Makes sure all content stays under nav-bar */
+    padding-top: 60px; 
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+/* Makes all images responsive */
+img { 
+    max-width: 100%; 
+}
+
+/* Email - Reverse to fool spam bots */
+span.reverse {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+
+/********* FONTS ****************/
+p {
+    font-size: 16px;
+}
+
+.smaller {
+    font-size: 14px;
+    color: grey;
+}
+
+.sectionTitle {
+    color:black;
+    padding-bottom: 20px;
+}
+
+.sectionTitleInverse {
+    color:white; 
+    padding-bottom: 20px;
+}
+
+#about h4 {
+    color:white;
+}
+
+#about i {
+    color:black;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+
+/********* NAV BAR ****************/
+@media(min-width:767px) {
+    /* Expand navbar when user scrolls down the page */
+    .navbar {
+        padding: 10px 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .top-nav-collapse {
+        padding: 0;
+    }
+}
+
+.navbar-default {
+    border-color: transparent;
+    background: white;
+    border: none;
+}
+
+.navbar-default .navbar-brand {
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 400;
+    color: #00b051;
+    font-size: 30px;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:active,
+.navbar-default .navbar-brand.active {
+    color: #FCB716;
+}
+
+.navbar-default .navbar-collapse {
+    border-color: rgba(255,255,255,.02);
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    background-color: #34495e;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #B62367;
+}
+
+.navbar-default .nav li a {
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: black;
+}
+
+.navbar-default .nav li a:hover {
+    outline: 0;
+    color: #FCB716;
+/*    color: white;*/
+/*    background: #B62367;*/
+}
+
+.navbar-default .navbar-nav>.active>a {
+    border-radius: 0;
+    color: #fff;
+    background-color: #B62367;
+}
+
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #B62367;
+}
+
+/********* HEADER ****************/
+header {
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-image: url(../../../assets/img/WiCS2014Dk.png);
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-bckground-size: cover;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.header-row {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+header .intro-text {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+header .intro-text .intro-lead-in {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 30px;
+    color: white;
+}
+
+header .intro-text .intro-heading {
+    margin-bottom: 25px;
+/*    text-transform: uppercase;*/
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    line-height: 40px;
+}
+
+header .contact-more-button {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 40px;
+    padding: 20px 40px 20px 40px;
+    border: none;
+    background: #f1c40f;
+}
+
+/********* LINKS ****************/
+/* unvisited link */
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #B62367;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+/********* HOURS & LOCATION SECTION ****************/
+#location {
+    background: #f6f6f6;
+    min-height: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* MapMap */
+#map-container { 
+    height: 300px; 
+}
+
+/********* HELP SECTION ****************/
+#about {
+    min-height: 100%;
+    padding-top: 70px;
+    padding-bottom: 100px;
+    background: #00b051;
+}
+
+/********* PORTFOLIO SECTION ****************/
+#contact {
+    min-height: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #00b051;
+}
+
+
+/********* FOOTER ****************/
+footer {
+    padding: 25px 0;
+    text-align: center;
+    background: #f1c40f;
+}
+
+footer span.copyright {
+    text-transform: uppercase;
+    text-transform: none;
+    color: white;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}
+
+
