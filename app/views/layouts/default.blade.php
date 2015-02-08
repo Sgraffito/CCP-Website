@@ -42,7 +42,7 @@
     {{ HTML::script('assets/js/scrolling-nav.js') }}
     
     <!-- Detects Touches on Captioned Images -->
-    <!--    {{HTML::script('assets/js/modernizr.custom.js')}}-->
+        {{HTML::script('assets/js/modernizr.custom.js')}}
     
     <!-- Include all compiled plugins for Google Maps -->
     {{ HTML::script('http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js') }}
@@ -50,48 +50,47 @@
     
     <!-- Script for Google Maps -->
     {{ HTML::script('assets/js/googleMaps.js') }}
+    
+    <!-- Script for embedding Processing -->
+    {{ HTML::script('assets/js/processing.min.js') }}
+    
+    <!-- Script for drop-down menu Processing -->
+    {{ HTML::script('assets/js/dropdown.js') }}
+    
+    <!-- Script for Bootstrap validator -->
+    {{ HTML::script('assets/js/validator.js') }}
 </head>
 
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body>
 
     <!-- NAV BAR -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+    <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" 
-                        data-toggle="collapse" 
-                        data-target="#bs-example-navbar-collapse-1">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" 
+                        data-toggle="collapse" class="navbar-toggle">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">CCP</a>
+                <a href="/" class="navbar-brand">CCP</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Data-toggle dismisses drop down nav when button is clicked -->
-                    <li class="hidden" data-toggle="collapse" data-target=".navbar-collapse">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li data-toggle="collapse" data-target=".navbar-collapse">
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li data-toggle="collapse" data-target=".navbar-collapse">
-                        <a class="page-scroll" href="#location">Hours &amp Location</a>
-                    </li>
-                    <li data-toggle="collapse" data-target=".navbar-collapse">
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">Programming</a>
-                    </li>
+            <!-- Collection of nav links and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="about">About</a></li>
+                    <li><a href="location">Hours &amp Location</a></li>
+                    <li><a href="contact">Contact</a></li>
                 </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login">Login</a></li>
+                </ul>
+                
             </div>
         </div>
     </nav>

@@ -13,6 +13,39 @@ html {
 /* Makes all images responsive */
 img { 
     max-width: 100%; 
+    border-style: none;
+}
+
+/* Make all canvases responsive */
+canvas {
+    max-width: 100%;
+    border-style: solid;
+    border-width: 15px;
+    border-color: white;
+}
+
+/* Remove blue border when canvas is clicked */
+canvas:focus {
+    outline: 0;
+}
+
+/* Remove blue border when image is clicked */
+img a {
+    outline : none;
+}
+
+/* Remove inner shadow from buttons */
+.btn {
+    background-image: none;
+    outline: none;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
 }
 
 /* Email - Reverse to fool spam bots */
@@ -22,9 +55,21 @@ span.reverse {
 }
 
 
+/* showcase background */
+.showback {
+	background: #fff;
+	padding: 15px;
+	margin-bottom: 15px;
+	box-shadow: 0px 3px 2px #aab2bd;
+}
+
 /********* FONTS ****************/
 p {
     font-size: 16px;
+}
+
+p.errors {
+    color:red;
 }
 
 .smaller {
@@ -34,16 +79,12 @@ p {
 
 .sectionTitle {
     color:black;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 .sectionTitleInverse {
     color:white; 
     padding-bottom: 20px;
-}
-
-#about h4 {
-    color:white;
 }
 
 #about i {
@@ -54,18 +95,8 @@ p {
 }
 
 /********* NAV BAR ****************/
-@media(min-width:767px) {
-    /* Expand navbar when user scrolls down the page */
-    .navbar {
-        padding: 10px 0;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        transition: background .5s ease-in-out,padding .5s ease-in-out;
-    }
-
-    .top-nav-collapse {
-        padding: 0;
-    }
+.navbar {
+    padding:8px;
 }
 
 .navbar-default {
@@ -112,6 +143,20 @@ p {
     font-weight: 400;
     letter-spacing: 1px;
     color: black;
+}
+
+.navbar-default .nav li button {
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: black;
+    background: white;
+    border: white;
+}
+
+.navbar-default .nav li button {
+    
 }
 
 .navbar-default .nav li a:hover {
@@ -189,6 +234,11 @@ header .contact-more-button {
     background: #f1c40f;
 }
 
+header .contact-more-button a:hover {
+    color:red;
+    background: #afafaf;
+}
+
 /********* LINKS ****************/
 /* unvisited link */
 a:link {
@@ -214,11 +264,23 @@ a:active {
     text-decoration: none;
 }
 
-/********* HOURS & LOCATION SECTION ****************/
+/********* ABOUT PAGE ****************/
+#about {
+    min-height: 100%;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    background: #00b051;
+}
+
+.project-description {
+    color:white;
+}
+
+/********* HOURS & LOCATION PAGE ****************/
 #location {
     background: #f6f6f6;
     min-height: 100%;
-    padding-top: 100px;
+    padding-top: 60px;
     padding-bottom: 100px;
 }
 
@@ -227,22 +289,53 @@ a:active {
     height: 300px; 
 }
 
-/********* HELP SECTION ****************/
-#about {
+/********* INFO SECTION ****************/
+#info {
     min-height: 100%;
-    padding-top: 70px;
-    padding-bottom: 100px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     background: #00b051;
 }
 
-/********* PORTFOLIO SECTION ****************/
-#contact {
+/********* CLASSES SECTION ****************/
+#classes {
     min-height: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: #f6f6f6;
+}
+
+/********* LOGIN PAGE ****************/
+#login {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
     background: #00b051;
 }
 
+#login h3 {
+    padding-bottom: 10px;
+}
+
+#login h4 {
+    color:#34495e;
+}
+
+/********* PROFILE PAGE ****************/
+#profile {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
+
+/********* SUCCESSFUL SIGN-IN PAGE ****************/
+#successful-signin {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
 
 /********* FOOTER ****************/
 footer {
@@ -258,5 +351,3 @@ footer span.copyright {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 40px;
 }
-
-

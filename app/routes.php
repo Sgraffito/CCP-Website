@@ -12,3 +12,14 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
+Route::get('about', 'HomeController@showAbout');
+Route::get('contact', 'HomeController@showContact');
+Route::get('location', 'HomeController@showLocation');
+Route::get('login', 'HomeController@showLogin');
+Route::post('login', 'HomeController@doLogin');
+Route::post('sign-up', 'HomeController@doSignUp');
+
+Route::get('profile', 'AccountController@showSuccessfulLogin');
+Route::get('successful-signin', 'AccountController@showSuccessfulSignUp');
+
+Route::get('Programming', 'ProgrammingController@showProgrammingHome');

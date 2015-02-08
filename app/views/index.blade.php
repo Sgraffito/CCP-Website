@@ -8,88 +8,62 @@
                 <div class="intro-lead-in">
                     Welcome To The Copper Country Programmers Site!</div>
                 <div class="intro-heading">
-                    CCP is a programming group for middle and high school kids in Michigan's Copper Country
+                    CCP is a programming group for middle and high school kids in Michigan's Keweenaw Peninsula
                 </div>
-                {{ HTML::link("#location", "Learn More About Us", array('class'=>'btn btn-primary btn-lg text-center contact-more-button')) }}
+                {{ HTML::link("about", "Learn More About Us", array('class'=>'btn btn-warning btn-lg text-center contact-more-button')) }}
             </div>        
         </div>
     </header>
     
 
-    <!-- About Section ------------------------------------------>
-    <section id="about">
-        
+    <section id="info">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="sectionTitleInverse">About CCP</h2>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div id="??" 
-                     class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <h4>Have you ever wondered how websites are built, how video games are created, or how apps for smartphones are designed? They were all created using programming languages, which are special languages that allow people to communicate with computers. </h4>
-                    <p>Every Saturday we teach middle and high school students how to program.
-                        Classes are taugh by MTU professors and students. Currently we have three groups of students: beginners, intermediate, and advance. </p>
-                    <h4>Beginner Group</h4>
-                    <i class="fa fa-check-circle"> <b>HTML</b>: build your own website</i>
-                    <i class="fa fa-check-circle"> <b>LOGO</b>: make cool art</i>
-                    <i class="fa fa-check-circle"> <b>Processing</b>: create video games</i>
-
-                    <h4>Intermediate Group </h4>
-                    <i class="fa fa-check-circle"> <b>LOGO</b>: do more advance coding with LOGO</i>
-                    <i class="fa fa-check-circle"> <b>Processing</b>: create advance video games</i>
+                    <h2 class="sectionTitle">Some Programs We Have Made</h2>
+                
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
+                        <canvas data-processing-sources=
+                                "assets/processing/CircleColorsDiffShapes/CircleColorsDiffShapes.pde"></canvas>
+                        <h4>Bubble Explosion</h4>
+                        <p>Author: Jane Doe</p>
+                        <p>Grade: 10</p>
+                        <p>learn more</p>
+                    </div>
                     
-                    <h4>Advance Group</h4>
-                    <i class="fa fa-check-circle"> <b>Java</b>: learn how to use the coding language used by professionals</i>
-                    <i class="fa fa-check-circle"> <b>Contests</b>: put your Java skills to use when you participate in Bonzai Brawl</i>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
+                        <canvas data-processing-sources=
+                                "assets/processing/CircleColorsDiffShapes/CircleColorsDiffShapes.pde"></canvas>
+                        <h4>Cannon Game</h4>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
+                        <canvas data-processing-sources
+                                ="assets/processing/CircleColorsDiffShapes/CircleColorsDiffShapes.pde"></canvas>
+                        <h4>Target Game</h4>
+                    </div>
+                    
+               
+
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Hours & Location Section ------------------------------------------>
-    <section id="location">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="sectionTitle">Hours &amp Location</h2>
-                </div>
-            </div>
-            
-            <!-- Map -->
-            <div class="row">
-                <div id="map-container" 
-                     class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <h4>We meet in the Michigan Tech Library every 
-                    Saturday afternoon for two hours. All students are welcome.</h4>
-                    <p>January through May 2015</br>
-                        Saturdays: 11:00am-1:00pm </br>
-                        Room 244 of the MTU Library</p>
-                    <p class="smaller">
-                        Michigan Technologial University</br>
-                        1400 Townsend Drive
-                        Houghton, MI 49931
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-        
-    
     
     <!-- Services Section ------------------------------------------>
-    <section id="contact">
+    <section id="classes">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact</h2>
+                    <h2 class="sectionTitle">Our Classes</h2>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        {{ HTML::image('assets/img/Class2014.png') }}
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                       <h4>More Hellos</h4> 
+                    </div>
+
                 </div>
             </div>
         </div>
