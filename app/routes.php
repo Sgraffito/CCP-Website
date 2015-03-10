@@ -18,8 +18,14 @@ Route::get('location', 'HomeController@showLocation');
 Route::get('login', 'HomeController@showLogin');
 Route::post('login', 'HomeController@doLogin');
 Route::post('sign-up', 'HomeController@doSignUp');
+Route::post('loginAfterSignUp', 'HomeController@doLoginAfterSignup');
 
 Route::get('profile', 'AccountController@showSuccessfulLogin');
 Route::get('successful-signin', 'AccountController@showSuccessfulSignUp');
+Route::get('accountSignOut', 'AccountController@showSignOut');
+Route::get('myAccountSettings', 'AccountController@showMyAccountSettings');
+Route::post('changeOldPassword', 'AccountController@doChangePassword');
+Route::post('changeEmail', 'AccountController@doChangeEmail');
+Route::post('deleteAccount', 'AccountController@doDeleteAccount');
 
 Route::get('Programming', 'ProgrammingController@showProgrammingHome');

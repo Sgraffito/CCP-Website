@@ -36,14 +36,7 @@
     <!-- Latest compiled and minified JavaScript -->
     {{ HTML::script('https://code.jquery.com/jquery-2.1.1.min.js') }}
     {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
- 
-    <!-- Scrolling Nav JavaScript -->
-    {{ HTML::script('assets/js/jquery.easing.min.js') }}
-    {{ HTML::script('assets/js/scrolling-nav.js') }}
-    
-    <!-- Detects Touches on Captioned Images -->
-        {{HTML::script('assets/js/modernizr.custom.js')}}
-    
+         
     <!-- Include all compiled plugins for Google Maps -->
     {{ HTML::script('http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js') }}
     {{ HTML::script('http://maps.google.com/maps/api/js?sensor=false') }}
@@ -57,8 +50,6 @@
     <!-- Script for drop-down menu Processing -->
     {{ HTML::script('assets/js/dropdown.js') }}
     
-    <!-- Script for Bootstrap validator -->
-    {{ HTML::script('assets/js/validator.js') }}
 </head>
 
 
@@ -88,8 +79,33 @@
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login">Login</a></li>
+                    
+                    @if(isset(Auth::user()->username))
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                           aria-expanded="false">
+                            {{ isset(Auth::user()->username) ? Auth::user()->username :  'Login'}}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="profile">View my profile</a></li>
+                            <li><a href="myAccountSettings">Account settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="accountHelp">Help</a></li>
+                            <li class="divider"></li>
+                            <li><a href="accountSignOut">Sign out</a></li>
+                        </ul>
+                    </li>
+                    @else
+                    <li><a href="login">
+                        {{ isset(Auth::user()->username) ? Auth::user()->username :  'Login'}}
+                    </a></li>
+                    @endif
+
+                    
                 </ul>
+                
+                
+                
                 
             </div>
         </div>

@@ -58,7 +58,8 @@ span.reverse {
 /* showcase background */
 .showback {
 	background: #fff;
-	padding: 15px;
+	padding: 30px;
+    padding-top: 15px;
 	margin-bottom: 15px;
 	box-shadow: 0px 3px 2px #aab2bd;
 }
@@ -329,8 +330,57 @@ a:active {
     background: #00b051;
 }
 
+#profile .container {
+    background: white;
+}
+
+#profile .welcome h3 {
+    color: #B62367;
+}
+
+/********* ACCOUNT SETTINGS ****************/
+#my_account_settings {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
+
+#my_account_settings h3 {
+    padding-bottom: 10px;
+}
+
+#my_account_settings h4 {
+    color:#34495e;
+    padding-bottom: 10px;
+}
+
 /********* SUCCESSFUL SIGN-IN PAGE ****************/
 #successful-signin {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
+
+/********* SIGN-OUT PAGE ****************/
+#sign-out{
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
+
+/********* SUCCESSFUL DELETE PAGE ****************/
+#successful-signin {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
+
+/********* SUCCESSFUL DELETE PAGE ****************/
+#successful-delete-account {
     min-height: 100%;
     padding-top: 40px;
     padding-bottom: 40px;

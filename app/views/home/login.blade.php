@@ -37,8 +37,8 @@
                     <div class="form-group">
                         {{ Form::label('password', 'Password') }}
                         {{ Form::password('password', 
-                        array('placeholder' => 'Password',
-                        'class' => 'form-control')) }}
+                            array('placeholder' => 'Password',
+                            'class' => 'form-control')) }}
                     </div>
 
                     <!-- If there are login errors, show them here -->
@@ -58,7 +58,8 @@
                     <!-- Submit button -->
                     <div>{{ Form::submit('Login',
                         array('class' => 'btn btn-info',
-                        'name' => 'login')) }}</div>
+                        'name' => 'login',
+                        'page' => 'myAccountSettings')) }}</div>
                     
                     {{ Form::close() }}
                 </div>
@@ -139,14 +140,12 @@
                         array('class' => 'btn btn-danger',
                         'name' => 'sign-up')) }}</div>
                     
-                   
-                    
                     {{ Form::close() }}
                 </div>
             </div>  <!-- End Form -->
             
             
-        </div>
+        </div> <!-- End Container Class -->
     </section>
 
 @stop

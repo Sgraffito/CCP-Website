@@ -126,4 +126,49 @@ class HomeController extends BaseController {
             }
         }
     }
+    public function doLoginAfterSignup()
+    {
+        // Validate the info, create rules for inputs
+        $rules = array(
+            'username' => 'required', // Username and password are required
+            'password' => 'required'
+        );
+        
+        // Run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        
+        // If the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            return Redirect::to('successful-signin')
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput(Input::except('password'))
+                ->with('doLoginAfterSignup', 'doLoginAfterSignup');
+
+        }
+        else {
+            
+            // Create userdata for authentication
+            $userdata = array(
+                'username' => Input::get('username'),
+                'password' => Input::get('password')
+            );
+            
+            // Checks plaintext password against the hashed password
+            // in the database
+            if (Auth::attempt($userdata)) {
+                // validation successful!
+                // redirect them to the secure section or whatever
+                // return Redirect::to('secure');
+                return Redirect::to('profile');
+            }
+            else {
+                // validation not successful, send back to form
+                return Redirect::to('successful-signin')
+                    ->withErrors($validator)
+                    ->withInput(Input::except('password'))
+                    ->with('message', 'Username or password is incorrect. Please try again.')
+                    ->with('doLoginAfterSignup', 'doLoginAfterSignup');
+            }
+        }
+    }
 }
