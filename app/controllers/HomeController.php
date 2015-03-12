@@ -65,6 +65,7 @@ class HomeController extends BaseController {
 			$user->username = Input::get('signup-username');
 			$user->email = Input::get('signup-email');
 			$user->password = Hash::make(Input::get('signup-password'));
+            $user->photo_file_name = 'ccpuserphoto.jpg';
 //			$user->confirmed = md5(uniqid(mt_rand()));
 			$user->save();
             

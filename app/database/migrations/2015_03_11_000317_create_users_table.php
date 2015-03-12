@@ -1,7 +1,5 @@
 <?php
 
-// https://scotch.io/tutorials/simple-and-easy-laravel-login-authentication
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -21,6 +19,7 @@ class CreateUsersTable extends Migration {
             $table->string('username', 32);
             $table->string('email', 255);
             $table->string('password', 255);
+            $table->string('photo_file_name', 255);
             
             // required for Laravel 4.1.26
             $table->string('remember_token', 100)->nullable();

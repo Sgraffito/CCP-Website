@@ -27,5 +27,8 @@ Route::get('myAccountSettings', 'AccountController@showMyAccountSettings');
 Route::post('changeOldPassword', 'AccountController@doChangePassword');
 Route::post('changeEmail', 'AccountController@doChangeEmail');
 Route::post('deleteAccount', 'AccountController@doDeleteAccount');
+Route::post('uploadUserPhoto', 'AccountController@doUploadPhoto');
+Route::post('uploadProcessingProject', 'AccountController@doUploadProcessingProject');
+
 
 Route::get('Programming', 'ProgrammingController@showProgrammingHome');

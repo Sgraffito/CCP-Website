@@ -118,5 +118,130 @@ class AccountController extends BaseController {
 		  return View::make('/accounts/account-delete');
         }   
     }
+    
+    public function doUploadPhoto()
+    {
+        if (Input::hasFile('file')) {
+            //return Input::file('file')->getClientOriginalName();
+        }
+        
+        // Validate the info, create rules for inputs
+        $rules = array(
+            //The file under validation must be an image (jpeg, png, bmp, gif, or svg)
+            'file' => 'required|image'
+        ); 
+        
+        // Run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        
+        // If the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            return Redirect::to('myAccountSettings')
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput()
+                ->with('user-photo-error', 'user-photo-error');
+        }
+
+        // Validator is successful
+        else {
+            // If file is valid, upload file to given path
+            if (self::correct_size(Input::file('file'))) {
+                $destinationPath = 'public/assets/uploads'; // upload path
+                
+                // getting image extension
+                $extension = Input::file('file')->getClientOriginalExtension(); 
+                $fileName = rand(11111,99999).'.'.$extension; // renaming image
+                
+                // uploading file to given path
+                Input::file('file')->move($destinationPath, $fileName); 
+                
+                // Save image to database
+                $user = Auth::user();  
+                $user->photo_file_name = $fileName;
+                $user->save();
+
+                // sending back with message
+                Session::flash('success', 'You have a new profile picture!'); 
+                return Redirect::to('myAccountSettings');
+            }
+            
+            // If file is not valid, send back error message
+            else {
+                // sending back with error message.
+                Session::flash('error', 'Uploaded file is not at least 300x300 pixles');
+                return Redirect::to('myAccountSettings');
+            }
+        }
+    }
+    
+    public function correct_size($photo) 
+    {
+        $minHeight = 300;
+        $minWidth = 300;
+        list($width, $height) = getimagesize($photo);
+        return ( ($width >= $minWidth) && ($height >= $minHeight) );
+    }
+    
+    public function doUploadProcessingProject() 
+    {
+        if (Input::hasFile('file')) {
+            //return Input::file('file')->getClientOriginalName();
+            //return Input::file('file')->getClientOriginalExtension();
+        }
+        
+        // Validate the info, create rules for inputs
+        $rules = array(
+            'file' => 'required'
+        );
+        
+        // Run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        
+        // If the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            return Redirect::to('profile')
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput()
+                ->with('upload-project-error', 'upload-project-error');
+        }
+        
+        // Validator is successful
+        else {
+            if (self::correct_file_extension(Input::file('file')->getClientOriginalExtension())) {
+                
+                $destinationPath = 'public/assets/processing'; // upload path
+                
+                // getting image extension
+                $extension = Input::file('file')->getClientOriginalExtension(); 
+                $fileName = rand(11111,99999).'.'.$extension; // renaming image
+                
+                // uploading file to given path
+                Input::file('file')->move($destinationPath, $fileName); 
+                
+                // Save project to database
+                $projects = new Projects;
+                $projects->user_id = Auth::user()->id;
+                $projects->project_file_name = $fileName;
+                $projects->save();
+                
+                // sending back with message
+                Session::flash('success', 'Your project has been uploaded!'); 
+                return Redirect::to('profile');
+
+            }
+            else {
+                // sending back with error message.
+                Session::flash('error', 'The file should have a .pde extension');
+                return Redirect::to('profile');
+            }
+        }
+
+
+    
+    }
+    public function correct_file_extension($file) {
+        $fileExtension = 'pde';
+        return ( $fileExtension == $file );
+    }
 }
 

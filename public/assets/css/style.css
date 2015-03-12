@@ -179,6 +179,15 @@ p.errors {
     background-color: #B62367;
 }
 
+
+/********* NAV BAR USER PHOTO ****************/
+.brand { 
+    width: 50px;
+    height: 50px; 
+    padding-bottom: 0;
+    margin-top: 5px;
+}
+
 /********* HEADER ****************/
 header {
     text-align: center;
@@ -331,11 +340,33 @@ a:active {
 }
 
 #profile .container {
-    background: white;
+    background: #f6f6f6;
+    padding-bottom: 50px;
 }
 
-#profile .welcome h3 {
-    color: #B62367;
+#profile .file-button {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+#profile .welcome h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #34495e;
+}
+
+#profile .current-project h4 {
+    padding-bottom: 20px;
+}
+
+#profile hr {
+    border-color: white;
+    border-width: 5px;
+}
+
+.add-new-project-button {
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 /********* ACCOUNT SETTINGS ****************/
@@ -353,6 +384,10 @@ a:active {
 #my_account_settings h4 {
     color:#34495e;
     padding-bottom: 10px;
+}
+
+#my_account_settings .file-button {
+    padding: 2px 0px 25px 0px;
 }
 
 /********* SUCCESSFUL SIGN-IN PAGE ****************/
