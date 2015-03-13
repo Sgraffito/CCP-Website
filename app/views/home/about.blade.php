@@ -14,12 +14,12 @@
             <div class="row">
                 <div id="??" 
                      class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    {{HTML::image('assets/img/Brushes.jpg')}}                                                              
+                    {{HTML::image('assets/img/Class2014.png')}}                                                     
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <h4>Have you ever wondered how websites are built, how video games are created, or how apps for smartphones are designed? They were all created using programming languages, which are special languages that allow people to communicate with computers. </h4>
-                    <p>Every Saturday we teach middle and high school students how to program.
-                        Classes are taugh by MTU professors and students. Currently we have three groups of students: beginners, intermediate, and advance. </p>
+                    <h4>Every Saturday we teach middle and high school students how to program.
+                        Classes are taugh by MTU professors and students. Currently we have three groups of students: beginners, intermediate, and advance. </h4>
                     <h4>Beginner Group</h4>
                     <i class="fa fa-check-circle"> <b>HTML</b>: build your own website</i>
                     <i class="fa fa-check-circle"> <b>LOGO</b>: make cool art</i>

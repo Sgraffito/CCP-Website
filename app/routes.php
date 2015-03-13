@@ -20,10 +20,14 @@ Route::post('login', 'HomeController@doLogin');
 Route::post('sign-up', 'HomeController@doSignUp');
 Route::post('loginAfterSignUp', 'HomeController@doLoginAfterSignup');
 
-Route::get('profile', 'AccountController@showSuccessfulLogin');
 Route::get('successful-signin', 'AccountController@showSuccessfulSignUp');
+Route::get('profile', 'AccountController@showSuccessfulLogin');
+Route::get('help', 'AccountController@showHelp');
+Route::get('studentWork', 'AccountController@showStudentWork');
 Route::get('accountSignOut', 'AccountController@showSignOut');
 Route::get('myAccountSettings', 'AccountController@showMyAccountSettings');
+
+/* Account Settings Page */
 Route::post('changeOldPassword', 'AccountController@doChangePassword');
 Route::post('changeEmail', 'AccountController@doChangeEmail');
 Route::post('deleteAccount', 'AccountController@doDeleteAccount');

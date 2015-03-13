@@ -42,10 +42,12 @@
     <!-- Script for embedding Processing -->
     {{ HTML::script('assets/js/processing.min.js') }}
     
+		
     <!-- Latest compiled and minified JavaScript -->
     {{HTML::script('//code.jquery.com/jquery-2.1.1.min.js')}}
     {{HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')}}
     
+   
 </head>
 
 
@@ -71,7 +73,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="about">About</a></li>
                     <li><a href="location">Hours &amp Location</a></li>
-                    <li><a href="contact">Contact</a></li>
+                    <li><a href="studentWork">Student Work</a></li>
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
@@ -86,7 +88,7 @@
                             <li><a href="profile">View my profile</a></li>
                             <li><a href="myAccountSettings">Account settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="accountHelp">Help</a></li>
+                            <li><a href="help">Help</a></li>
                             <li class="divider"></li>
                             <li><a href="accountSignOut">Sign out</a></li>
                         </ul>

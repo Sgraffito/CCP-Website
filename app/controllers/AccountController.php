@@ -9,13 +9,32 @@ class AccountController extends BaseController {
 
     public function showSuccessfulLogin() 
     {
-        return View::make('/accounts/profile');   
-    }
+        $projects = DB::table('projects')->where('user_id', Auth::user()->id)->get();
 
+        return View::make('/accounts/profile')->with('currentUserWork', $projects);   
+    }
+    
+    public function showHelp() 
+    {
+        return View::make('/help/help');   
+    }
+    
     public function showSuccessfulSignUp() 
     {
         return View::Make('/accounts/successful-signin');
     }
+    
+    public function showStudentWork() {
+        
+        $test = DB::table('projects')->where('project_public', 1)->get();
+        $projects = DB::table('projects')
+            ->leftJoin('users', 'users.id', '=', 'projects.user_id')
+            ->where('project_public', 1)
+            ->get();
+
+        return View::Make('/home/student-work')->with('studentWork', $projects);
+    }
+    
     public function showSignOut() 
     {
         Auth::logout();     // log the user out
@@ -23,10 +42,12 @@ class AccountController extends BaseController {
         // Go to new page that tells user they logged out successfullly
         return View::Make('/accounts/sign-out');
     }
+    
     public function showMyAccountSettings() 
     {   
         return View::Make('/accounts/my_account_settings');   
     }
+    
     public function doChangePassword()
     {
         // Validate the info, create rules for inputs
@@ -191,7 +212,9 @@ class AccountController extends BaseController {
         
         // Validate the info, create rules for inputs
         $rules = array(
-            'file' => 'required'
+            'project-name' => 'required|max:100',
+            'file' => 'required',
+            'project-notes' => 'max:255'
         );
         
         // Run the validation rules on the inputs from the form
@@ -220,17 +243,30 @@ class AccountController extends BaseController {
                 
                 // Save project to database
                 $projects = new Projects;
+                $projects->project_name = Input::get('project-name');
                 $projects->user_id = Auth::user()->id;
                 $projects->project_file_name = $fileName;
+                
+                $sharing = false;
+                $selectedButton = Input::get('sharing', true);
+                if ($selectedButton == 'private') {
+                    $sharing = false;  
+                }
+                elseif ($selectedButton == 'public') {
+                    $sharing = true;  
+                }
+                $projects->project_public = $sharing;
+                
+                $projects->project_notes = Input::get('project-notes');
                 $projects->save();
                 
-                // sending back with message
+                // Sending back with message
                 Session::flash('success', 'Your project has been uploaded!'); 
                 return Redirect::to('profile');
 
             }
             else {
-                // sending back with error message.
+                // Sending back with error message.
                 Session::flash('error', 'The file should have a .pde extension');
                 return Redirect::to('profile');
             }

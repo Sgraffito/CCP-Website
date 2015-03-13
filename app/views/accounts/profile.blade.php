@@ -52,10 +52,12 @@
                 </div>
                 
                 
-                @foreach(Projects::all()->take(3) as $u)
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
+                <!-- Display all the projects --> 
+                @foreach($currentUserWork as $work)
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center 
+                                project-description">
                         <canvas data-processing-sources= 
-                                {{ $fileName = 'assets/processing/' . $u->project_file_name; }} > 
+                                {{ $fileName = 'assets/processing/' . $work->project_file_name; }} > 
                         </canvas>        
                     </div>
                 @endforeach
@@ -70,6 +72,7 @@
                 Add New Project
             </button> 
             
+            <!-- Button for Add Processing Project Modal -->
             <button type="button" class="btn btn-info btn-lg add-new-project-button"
                 data-toggle="modal" data-target="#addProject">
                 View All
@@ -95,21 +98,54 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="alert alert-warning">
-                                    <p>You need to upload a Processing file, which means your file extension needs to be .pde</p>
+                                    <p>You need to upload a Processing file. 
+                                        The file extension of a Processing file is .pde</p>
                                 </div>
                                 
                                 <!-- Open the form -->
                                 {{ Form::open(array('url'=>'uploadProcessingProject',
                                     'files'=>true)) }}
 
-                                <!-- Get file button -->
-                                <div class='file-button'>
-                                {{ Form::file('file','',
-                                    array('id'=>'file','class'=>'btn btn-info btn-lg')) }}
+                                <!-- Project Name --> 
+                                <div class="form-group">
+                                    {{ Form::label('project-name', 'Project Name') }}
+                                    {{ Form::text('project-name',
+                                    Input::old('project-name'),
+                                    array('placeholder' => 'project name', 
+                                    'class' => 'form-control',
+                                    'id' => 'project-name')) }}
                                 </div>
 
+                                
+                                <!-- Get file button -->
+                                <div class='file-button'>
+                                    {{ Form::label('upload-photo', 'Upload Photo') }}
+                                    {{ Form::file('file','',
+                                        array('id' =>'file',
+                                        'class' => 'woopdedo')) }}
+                                </div>
+                                
+                                <!-- Private or Shared -->
+                                <div class="form-group">
+                                    {{ Form::label('upload-photo', 'Share Project') }}
+                                    <br>
+                                    {{ Form::radio('sharing','private', true) }} Private
+                                    {{ Form::radio('sharing','public') }} Public 
+                                </div>
+
+                                <!-- textarea field -->
+                                <div class="form-group">
+                                    {{ Form::label('project-notes','Project Notes',array('id'=>'','class'=>'')) }}
+                                    <br>
+                                    {{ Form::text('project-notes',
+                                    Input::old('project-notes'),
+                                    array('placeholder' => 'project notes', 
+                                    'class' => 'form-control',
+                                    'id' => 'project-notes')) }}
+                                </div>
+                               
                                 <!-- Submit button -->
-                                <div>
+                                <div class="form-group">
                                     {{ Form::submit('Upload Project',
                                     array('class' => 'btn btn-info',
                                     'name' => 'save-user-photo')) }}
@@ -122,7 +158,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- End Modal for adding Processing Project -->
+            
         </div>
     </section>
 

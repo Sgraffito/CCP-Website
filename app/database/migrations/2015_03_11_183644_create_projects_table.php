@@ -16,7 +16,10 @@ class CreateProjectsTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('user_id');
+            $table->string('project_name');
             $table->string('project_file_name');
+            $table->boolean('project_public');
+            $table->string('project_notes');
 			$table->timestamps();
 		});
 	}

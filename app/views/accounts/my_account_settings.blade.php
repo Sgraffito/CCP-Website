@@ -223,17 +223,62 @@
                             <p>Warning: deleting your account cannot be undone.</p>
                         </div>
 
-                        {{ Form::open(array('url' => 'deleteAccount', 
-                            'role' => 'form')) }}
-
-                        <!-- Submit button -->
-                        <div>
-                            {{ Form::submit('Delete Account',
-                            array('class' => 'btn btn-danger'
-                            )) }}
+                        <!-- Button for Delete Account Modal -->
+                        <button type="button" class="btn btn-danger"
+                            data-toggle="modal" data-target="#deleteAccount">
+                            Delete Account
+                        </button> 
                         </div>
+            
+                        <!-- Modal Delete Account -->
+                        <div class="modal fade" id="deleteAccount" tabindex="-1" role="dialog" 
+                            aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span><span class="sr-only">
+                                            Close
+                                            </span>
+                                        </button>
+                                        <h4 class="modal-title centered" id="myModalLabel">
+                                            Deleting Account
+                                        </h4>
+                                    </div>
 
-                        {{ Form::close() }}
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="alert alert-danger">
+                                                <p>Are you sure you want to delete your account?</p>
+                                                <p>This action can not be undone</p>
+                                            </div>
+
+                                            <!-- Open the form -->
+                                            {{ Form::open(array('url' => 'deleteAccount', 
+                                            'role' => 'form')) }}
+
+                                            <!-- Submit button -->
+                                            <div>
+                                                {{ Form::submit('Delete Account',
+                                                array('class' => 'btn btn-danger'
+                                                )) }}
+
+                                                <!-- Cancel button -->
+                                                <button type="button" class="btn btn-info"
+                                                    data-toggle="modal" data-target="#deleteAccount">
+                                                    Cancel
+                                                </button>  
+                                            </div>
+
+                                            <!-- Close the form -->
+                                            {{ Form::close() }}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End Modal for adding Processing Project -->
+                    
                     </div>
                 </div>
             </div>
