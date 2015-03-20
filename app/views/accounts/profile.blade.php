@@ -15,14 +15,14 @@
                             Welcome back 
                             {{ isset(Auth::user()->username) ? Auth::user()->username :  '' }}
                         </h2>
-                        
-                        <hr>
-                            
+                                                    
                     </div>
                 </div>
             </div>
             
-            <div class="current-project">
+            <hr> 
+            
+            <div class="current-project text-center">
                 <h3>Your Current Projects</h3>
                 
                 <!-- If there are login errors, show them here -->
@@ -53,30 +53,68 @@
                 
                 
                 <!-- Display all the projects --> 
-                @foreach($currentUserWork as $work)
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center 
-                                project-description">
-                        <canvas data-processing-sources= 
-                                {{ $fileName = 'assets/processing/' . $work->project_file_name; }} > 
-                        </canvas>        
+                <div class="tiles">
+
+                @foreach($currentUserWork as $u)
+
+                <div class="col-xm-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div id="canvas-container">
+                                <!-- The canvas -->
+                                <canvas data-processing-sources= 
+                                        {{ $fileName = 'assets/processing/' . $u->project_file_name; }} > 
+                                </canvas>
+
+                                <!-- Caption -->
+                                <div class="portfolio-caption text-center">
+                                    <h4> {{ $u->project_name }} </h4>
+                                    <p class="text-muted"> {{ date("Y",strtotime($u->updated_at)) }}</p>
+
+                                    <!-- More button -->
+                                    <a href=" {{ route('studentSingleWork', 
+                                       array('project-name' => $u->project_file_name)) }} " >
+                                        <button type="button" class="btn btn-info">
+                                            More
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> <!-- End panel body -->
+
                     </div>
+                </div>
+
                 @endforeach
+                </div> <!-- End tiles div -->
+            
+
+                <!-- New project buttons -->
+                <div class="new-project-button">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-info btn-lg add-new-project-button"
+                            data-toggle="modal" data-target="#addProject">
+                            <span class="fa fa-plus"></span>
+                            Add New Project
+                        </button> 
+
+                        <!-- Button for Add Processing Project Modal -->
+                        <button type="button" class="btn btn-info btn-lg add-new-project-button"
+                            data-toggle="modal" data-target="#addProject">
+                            View All
+                        </button> 
+                    </div>
+                </div>
                 
                 
-            </div>
+            </div> <!-- End current project -->
             
-            <div class="pull-right">
-            <button type="button" class="btn btn-info btn-lg add-new-project-button"
-                data-toggle="modal" data-target="#addProject">
-                <span class="fa fa-plus"></span>
-                Add New Project
-            </button> 
             
-            <!-- Button for Add Processing Project Modal -->
-            <button type="button" class="btn btn-info btn-lg add-new-project-button"
-                data-toggle="modal" data-target="#addProject">
-                View All
-            </button> 
+            <div class="tutorials text-center">
+                <hr>
+
+                <h3>Lessons</h3>
             </div>
             
             <!-- Modal Add Processing Project -->
@@ -163,5 +201,45 @@
         </div>
     </section>
 
+<!-- Script for stacking the rows -->
+<!-- http://www.benknowscode.com/2013/12/working-with-variable-height-css-floats.html -->
+<script >
+    
+function fitRows( $container, options ) {
+   var cols = options.numColumns,
+       $els = $container.children(),
+       maxH = 0, j,
+       doSize;
+   doSize = ( $container.width() != $els.outerWidth(true) );
+   $els.each(function( i, p ) {
+      var $p = $( p ), h;
+      $p.css( 'min-height', '' );
+      if ( !doSize ) return;
+      maxH = Math.max( $p.outerHeight( true ) + 1, maxH );
+      if ( i % cols == cols - 1 || i == cols - 1 ) {
+         for ( j=cols;j;j--) {
+            $p.css( 'min-height', maxH );
+            $p = $p.prev();
+         }
+         maxH = 0;
+      }
+   });
+}
+    
+$(window).load(function(){
+   var opts = {
+      numColumns: 3
+   };
+    
+   
+    fitRows( $( '.tiles' ), opts );
+    
+   $( window ).on( 'resize', function() {
+      fitRows( $( '.tiles' ), opts );
+   });
+});
+
+
+</script>
 
 @stop

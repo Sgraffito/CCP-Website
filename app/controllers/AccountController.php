@@ -9,7 +9,7 @@ class AccountController extends BaseController {
 
     public function showSuccessfulLogin() 
     {
-        $projects = DB::table('projects')->where('user_id', Auth::user()->id)->get();
+        $projects = DB::table('projects')->where('user_id', Auth::user()->id)->take(3)->get();
 
         return View::make('/accounts/profile')->with('currentUserWork', $projects);   
     }
@@ -32,8 +32,21 @@ class AccountController extends BaseController {
             ->where('project_public', 1)
             ->get();
 
-        return View::Make('/home/student-work')->with('studentWork', $projects);
+        return View::Make('/student-work/student-work')->with('studentWork', $projects);
     }
+    
+    public function showSingleStudentWork() {
+        
+        $proName = Input::get('project-name');
+        
+        $projects = DB::table('projects')
+            ->leftJoin('users', 'users.id', '=', 'projects.user_id')
+            ->where('project_file_name', $proName)
+            ->get();
+
+        return View::Make('/student-work/student-single-work')->with('projectName', $projects);        
+    }
+
     
     public function showSignOut() 
     {
@@ -131,12 +144,15 @@ class AccountController extends BaseController {
         // Find current user
         $user = User::find(Auth::user()->id);
         
+        $userName = Auth::user()->id;
+        
         // Logout before deleting the user
         Auth::logout();
 
         // Delete the user
         if ($user->delete()) {
-		  return View::make('/accounts/account-delete');
+            $affectedRows = DB::table('projects')->where('user_id', $userName)->delete();
+            return View::make('/accounts/account-delete');
         }   
     }
     
@@ -270,14 +286,27 @@ class AccountController extends BaseController {
                 Session::flash('error', 'The file should have a .pde extension');
                 return Redirect::to('profile');
             }
-        }
-
-
-    
+        }    
     }
     public function correct_file_extension($file) {
         $fileExtension = 'pde';
         return ( $fileExtension == $file );
+    }
+    
+    public function doDeleteProject() {
+        
+        // Find current user id
+        $userName = Auth::user()->id;
+        
+        $projectName = Input::get('project-name');
+        
+        // Delete the project
+        $affectedRows = DB::table('projects')->where('project_file_name', $projectName)->delete();
+        
+        // Sending back with error message.
+        Session::flash('success', 'The project was successfully deleted');
+
+        return Redirect::to('profile');
     }
 }
 

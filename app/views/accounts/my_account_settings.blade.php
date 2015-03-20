@@ -265,7 +265,7 @@
 
                                                 <!-- Cancel button -->
                                                 <button type="button" class="btn btn-info"
-                                                    data-toggle="modal" data-target="#deleteAccount">
+                                                    data-dismiss="modal">
                                                     Cancel
                                                 </button>  
                                             </div>

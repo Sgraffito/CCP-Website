@@ -23,7 +23,6 @@ Route::post('loginAfterSignUp', 'HomeController@doLoginAfterSignup');
 Route::get('successful-signin', 'AccountController@showSuccessfulSignUp');
 Route::get('profile', 'AccountController@showSuccessfulLogin');
 Route::get('help', 'AccountController@showHelp');
-Route::get('studentWork', 'AccountController@showStudentWork');
 Route::get('accountSignOut', 'AccountController@showSignOut');
 Route::get('myAccountSettings', 'AccountController@showMyAccountSettings');
 
@@ -34,5 +33,12 @@ Route::post('deleteAccount', 'AccountController@doDeleteAccount');
 Route::post('uploadUserPhoto', 'AccountController@doUploadPhoto');
 Route::post('uploadProcessingProject', 'AccountController@doUploadProcessingProject');
 
+/* Student Work Page */
+Route::get('studentWork', 'AccountController@showStudentWork');
+Route::get('studentSingleWork', array(
+    'as' => 'studentSingleWork',
+    'uses' => 'AccountController@showSingleStudentWork')
+);
+Route::post('deleteProject', 'AccountController@doDeleteProject');
 
 Route::get('Programming', 'ProgrammingController@showProgrammingHome');

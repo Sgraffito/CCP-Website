@@ -14,6 +14,7 @@
     {{ HTML::style('assets/css/my-bootstrap-theme.css')}}
     {{HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')}}
 
+
     <!-- Custom CSS -->
     {{ HTML::style('assets/css/style.css')}}
 
@@ -32,7 +33,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-         
+    <!-- highlight.js -->
+    {{ HTML::style('assets/css/github.css') }}
+    {{ HTML::script('assets/js/highlight.pack.js') }} 
+   
     <!-- Include all compiled plugins for Google Maps -->
     {{ HTML::script('http://maps.google.com/maps/api/js?sensor=false') }}
     
@@ -42,12 +46,10 @@
     <!-- Script for embedding Processing -->
     {{ HTML::script('assets/js/processing.min.js') }}
     
-		
     <!-- Latest compiled and minified JavaScript -->
     {{HTML::script('//code.jquery.com/jquery-2.1.1.min.js')}}
     {{HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')}}
     
-   
 </head>
 
 
@@ -74,6 +76,7 @@
                     <li><a href="about">About</a></li>
                     <li><a href="location">Hours &amp Location</a></li>
                     <li><a href="studentWork">Student Work</a></li>
+
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
