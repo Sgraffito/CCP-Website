@@ -22,6 +22,7 @@ Route::post('loginAfterSignUp', 'HomeController@doLoginAfterSignup');
 
 Route::get('successful-signin', 'AccountController@showSuccessfulSignUp');
 Route::get('profile', 'AccountController@showSuccessfulLogin');
+Route::get('add-project', 'AccountController@showAddProject');
 Route::get('help', 'AccountController@showHelp');
 Route::get('accountSignOut', 'AccountController@showSignOut');
 Route::get('myAccountSettings', 'AccountController@showMyAccountSettings');
@@ -39,6 +40,8 @@ Route::get('studentSingleWork', array(
     'as' => 'studentSingleWork',
     'uses' => 'AccountController@showSingleStudentWork')
 );
+
 Route::post('deleteProject', 'AccountController@doDeleteProject');
+Route::get('viewAllProjects', 'AccountController@showAllProjects');
 
 Route::get('Programming', 'ProgrammingController@showProgrammingHome');

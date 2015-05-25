@@ -10,7 +10,8 @@
                 <div class="intro-heading">
                     CCP is a programming group for middle and high school kids in Michigan's Keweenaw Peninsula
                 </div>
-                {{ HTML::link("about", "Learn More About Us", array('class'=>'btn btn-warning btn-lg text-center contact-more-button')) }}
+                {{ HTML::link("about", "Learn More About Us", 
+                array('class'=>'btn btn-warning btn-lg text-center contact-more-button')) }}
             </div>        
         </div>
     </header>
@@ -22,29 +23,40 @@
                 <div class="col-lg-12 text-center">
                     <h2 class="sectionTitle">Some Programs We Have Made</h2>
                 
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
-                        <canvas data-processing-sources=
-                                "assets/processing/CircleColorsDiffShapes/CircleColorsDiffShapes.pde"></canvas>
-                        <h4>Bubble Explosion</h4>
-                        <p>Author: Jane Doe</p>
-                        <p>Grade: 10</p>
-                        <p>learn more</p>
-                    </div>
-                    
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
-                        <canvas data-processing-sources=
-                                "assets/processing/CircleColorsDiffShapes/CircleColorsDiffShapes.pde"></canvas>
-                        <h4>Cannon Game</h4>
-                    </div>
-                    
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center project-description">
-                        <canvas data-processing-sources
-                                ="assets/processing/CircleColorsDiffShapes/CircleColorsDiffShapes.pde"></canvas>
-                        <h4>Target Game</h4>
-                    </div>
-                    
-               
+                    @foreach($exampleWorks as $u)
 
+                        <div class="col-xm-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div id="canvas-container">
+                                        <!-- The canvas -->
+                                        <canvas data-processing-sources= 
+                                                {{ $fileName = 'assets/processing/' . $u->project_file_name; }} > 
+                                        </canvas>
+
+                                        <!-- Caption -->
+                                        <div class="portfolio-caption text-center">
+                                            <h4> {{ $u->project_name }} </h4>
+                                            <p class="text-muted"> {{ $u->username }} </p>
+                                            <p class="text-muted"> {{ date("Y",strtotime($u->updated_at)) }}</p>
+
+                                            <!-- More button -->
+                                            <a href=" {{ route('studentSingleWork', 
+                                               array('project-name' => $u->project_file_name)) }} " >
+                                                <button type="button" class="btn btn-info">
+                                                    More
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- End panel body -->
+
+                            </div>
+                        </div>
+
+                    @endforeach
+                    
                 </div>
             </div>
         </div>
@@ -60,8 +72,24 @@
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         {{ HTML::image('assets/img/Class2014.png') }}
                     </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                       <h4>More Hellos</h4> 
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">                        
+                        
+                            <h4>Have you ever wondered how websites are built, how video games are created, or how apps for smartphones are designed? They were all created using programming languages, which are special languages that allow people to communicate with computers. </h4>
+                            <h4>Every Saturday we teach middle and high school students how to program.
+                                Classes are taugh by MTU professors and students. Currently we have three groups of students: beginners, intermediate, and advance. </h4>
+                            <h4>Beginner Group</h4>
+                            <i class="fa fa-check-circle"> <b>HTML</b>: build your own website</i> <br>
+                            <i class="fa fa-check-circle"> <b>LOGO</b>: make cool art</i> <br>
+                            <i class="fa fa-check-circle"> <b>Processing</b>: create video games</i> <br>
+
+                            <h4>Intermediate Group </h4>
+                            <i class="fa fa-check-circle"> <b>LOGO</b>: do more advance coding with LOGO</i> <br>
+                            <i class="fa fa-check-circle"> <b>Processing</b>: create advance video games</i> <br>
+
+                            <h4>Advance Group</h4>
+                            <i class="fa fa-check-circle"> <b>Java</b>: learn how to use the coding language used by professionals</i> <br>
+                            <i class="fa fa-check-circle"> <b>Contests</b>: put your Java skills to use when you participate in Bonzai Brawl</i> <br>
+                        
                     </div>
 
                 </div>

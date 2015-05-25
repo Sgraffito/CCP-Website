@@ -38,12 +38,16 @@ class AccountController extends BaseController {
     public function showSingleStudentWork() {
         
         $proName = Input::get('project-name');
+        //echo $proName;
         
         $projects = DB::table('projects')
             ->leftJoin('users', 'users.id', '=', 'projects.user_id')
             ->where('project_file_name', $proName)
             ->get();
-
+        
+        //var_dump($projects);
+        
+       //return View::Make('/student-work/student-single-work');
         return View::Make('/student-work/student-single-work')->with('projectName', $projects);        
     }
 
@@ -279,8 +283,8 @@ class AccountController extends BaseController {
                 // Sending back with message
                 Session::flash('success', 'Your project has been uploaded!'); 
                 return Redirect::to('profile');
-
             }
+            
             else {
                 // Sending back with error message.
                 Session::flash('error', 'The file should have a .pde extension');
@@ -288,6 +292,7 @@ class AccountController extends BaseController {
             }
         }    
     }
+    
     public function correct_file_extension($file) {
         $fileExtension = 'pde';
         return ( $fileExtension == $file );
@@ -307,6 +312,17 @@ class AccountController extends BaseController {
         Session::flash('success', 'The project was successfully deleted');
 
         return Redirect::to('profile');
+    }
+    
+    public function showAllProjects() {
+        
+        $projects = DB::table('projects')->where('user_id', Auth::user()->id)->get();
+
+        return View::make('/accounts/profile')->with('currentUserWork', $projects);   
+    }
+    
+    public function showAddProject() {
+        return View::make('/accounts/add-project');
     }
 }
 

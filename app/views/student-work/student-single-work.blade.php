@@ -5,17 +5,18 @@
 <!-- About Section ------------------------------------------>
     <section id="student-single-work">
         <div class="container">
-            <div class="row">
                 
                 @foreach($projectName as $u)
 
-                <div class="col-md-6 col-lg-6">
-                    <canvas data-processing-sources= 
+                <div class="col-md-12 col-lg-12 text-center">
+                    
+                    <canvas id="mysketchcanvasid" data-processing-sources= 
                             {{ $fileName = 'assets/processing/' . $u->project_file_name; }} > 
                     </canvas>
+                    
                 </div>
                 
-                <div class="col-md-6 col-lg-6 info-content">
+                <div class="col-md-12 col-lg-12 info-content">
                     <h3> Title: {{ $u->project_name }} </h3>
                     <h4> Author: {{ $u->username }} </h4>
                     <h4> Created: {{ date("Y",strtotime($u->updated_at)) }} </h4>
@@ -34,25 +35,26 @@
                             Show Code
                         </button>
                         
+                        @if (Auth::check()) 
+                            <!-- Only let owner edit & delete a project -->
+                            @if ($u->username == Auth::user()->username)
 
-                        <!-- Only let owner edit & delete a project -->
-                        @if ($u->username == Auth::user()->username)
+                            <!-- Edit button -->
+                            <a href=" {{ route('studentSingleWork', 
+                               array('project-name' => $u->project_file_name)) }} " >
+                                <button type="button" class="btn btn-info btn-lg">
+                                    <span class="fa fa-edit fa-lg"></span>
+                                    Edit Project
+                                </button>
+                            </a>
 
-                        <!-- Edit button -->
-                        <a href=" {{ route('studentSingleWork', 
-                           array('project-name' => $u->project_file_name)) }} " >
-                            <button type="button" class="btn btn-info btn-lg">
-                                <span class="fa fa-edit fa-lg"></span>
-                                Edit Project
+                            <!-- Delete Project button -->
+                            <button type="button" class="btn btn-info btn-lg" 
+                                    data-toggle="modal" data-target="#deleteProject">
+                                <span class="fa fa-trash-o fa-lg"></span>
+                                Delete Project
                             </button>
-                        </a>
-                        
-                        <!-- Delete Project button -->
-                        <button type="button" class="btn btn-info btn-lg" 
-                                data-toggle="modal" data-target="#deleteProject">
-                            <span class="fa fa-trash-o fa-lg"></span>
-                            Delete Project
-                        </button>
+                            @endif
                         @endif
                     </div>
                     
@@ -62,11 +64,7 @@
                 </div>
                 @endforeach
 
-            </div>
-            
-            <div class="row">
-                
-            </div>
+           
         </div>
     </section>
 
@@ -171,8 +169,25 @@ $(document).ready(function() {
     hljs.highlightBlock(block);
   });
 });
-    
+
+
 </script>
 
+<script type="text/javascript">
+    var bound = false;
+
+    function bindJavascript() {
+        var pjs = Processing.getInstanceById('mysketchcanvasid');
+        if(pjs!=null) {
+            pjs.bindJavascript(this);
+            bound = true; }
+        if(!bound) setTimeout(bindJavascript, 250); }
+
+    bindJavascript();
+
+    function showXYCoordinates(x, y) {
+        document.getElementById('xcoord').value = x;
+        document.getElementById('ycoord').value = y; }
+</script>
 
 @stop

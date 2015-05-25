@@ -19,9 +19,8 @@ img {
 /* Make all canvases responsive */
 canvas {
     max-width: 100%;
-    pointer-events: none;    
+    pointer-events: none; 
 }
-
 
 /* Remove blue border when canvas is clicked */
 canvas:focus {
@@ -348,6 +347,11 @@ a:active {
     padding-bottom: 30px;
 }
 
+#profile .image-button {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
 #profile .welcome h2 {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -362,7 +366,7 @@ a:active {
     padding-bottom: 10px;
 }
 
-#profile .current-project h4 {
+#profile .current-project {
     padding-bottom: 20px;
 }
 
@@ -437,6 +441,9 @@ a:active {
 
 #student-single-work canvas {
     pointer-events: all;
+    border: 20px;
+    color: white;
+    padding-bottom: 50px;
 }
 
 #single-program-code {
@@ -508,6 +515,14 @@ a:active {
 
 /********* SUCCESSFUL DELETE PAGE ****************/
 #successful-delete-account {
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #00b051;
+}
+
+/********* ADD NEW PROJECT SIGN-IN PAGE ****************/
+#add-project {
     min-height: 100%;
     padding-top: 40px;
     padding-bottom: 40px;

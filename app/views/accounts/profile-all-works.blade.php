@@ -3,9 +3,8 @@
 @section('content')        
     
 <!-- About Section ------------------------------------------>
-   
 
-    <section id="profile">
+    <section id="profile-all-works">
         <div class="container">
             
             <div class="row welcome">
@@ -22,8 +21,8 @@
             
             <hr> 
             
-            <div class="text-center">
-                <h3 class="current-project">Your Current Projects</h3>
+            <div class="current-project text-center">
+                <h3>Your Current Projects</h3>
                 
                 <!-- If there are login errors, show them here -->
                 <div>
@@ -55,7 +54,7 @@
                 <!-- Display all the projects --> 
                 <div class="tiles">
 
-                @foreach($currentUserWork as $u)
+                @foreach($allWorks as $u)
 
                 <div class="col-xm-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="panel panel-default">
@@ -70,9 +69,7 @@
                                 <!-- Caption -->
                                 <div class="portfolio-caption text-center">
                                     <h4> {{ $u->project_name }} </h4>
-                                    <p class="text-muted"> 
-                                        {{ date("Y",strtotime($u->updated_at)) }}
-                                    </p>
+                                    <p class="text-muted"> {{ date("Y",strtotime($u->updated_at)) }}</p>
 
                                     <!-- More button -->
                                     <a href=" {{ route('studentSingleWork', 
@@ -95,12 +92,11 @@
                 <!-- New project buttons -->
                 <div class="new-project-button">
                     <div class="pull-right">
-                        <a href="add-project">
-                        <button type="button" class="btn btn-info btn-lg add-new-project-button">
+                        <button type="button" class="btn btn-info btn-lg add-new-project-button"
+                            data-toggle="modal" data-target="#addProject">
                             <span class="fa fa-plus"></span>
                             Add New Project
                         </button> 
-                        </a>
 
                         <!-- Button for Add Processing Project Modal -->
                         <a href="viewAllProjects" >
@@ -115,12 +111,6 @@
             </div> <!-- End current project -->
             
             
-            <div class="tutorials text-center">
-                <hr>
-
-                <h3>Lessons</h3>
-            </div>
-            
             <!-- Modal Add Processing Project -->
             <div class="modal fade" id="addProject" tabindex="-1" role="dialog" 
                 aria-labelledby="myModalLabel" aria-hidden="true">
@@ -133,7 +123,7 @@
                                 </span>
                             </button>
                             <h4 class="modal-title centered" id="myModalLabel">
-                                Upload A Processing Project
+                                Upload Processing Project
                             </h4>
                         </div>
 
@@ -157,21 +147,15 @@
                                     'class' => 'form-control',
                                     'id' => 'project-name')) }}
                                 </div>
+
                                 
                                 <!-- Get file button -->
                                 <div class='file-button'>
-                                    {{ Form::label('upload-photo', 'Upload Processing File') }}
+                                    {{ Form::label('upload-photo', 'Upload Photo') }}
                                     {{ Form::file('file','',
                                         array('id' =>'file',
-                                        'class' => 'woopdedo')) }}                                      
+                                        'class' => 'woopdedo')) }}
                                 </div>
-                
-                                
-        
-                                    
-                                    
-                                    
-                                
                                 
                                 <!-- Private or Shared -->
                                 <div class="form-group">
@@ -199,17 +183,9 @@
                                     'name' => 'save-user-photo')) }}
                                 </div>
                                 
-                                
+                                <!-- Close the form -->
                                 {{ Form::close() }}
-                                <!--
-                                <form class="dropzone dz-clickable" id="dropzonetask" method="POST" action="#">
-                                <input type="hidden" name="task_id" value="#" />
-                                <div class="dz-message"><center>
-                                <h4>Drag Photos to Upload</h4>
-                                <span>Or click to browse</span></center>
-                                </div> 
-                                </form>   
-                                -->
+
                             </div>
                         </div>
                     </div>
@@ -245,15 +221,16 @@ function fitRows( $container, options ) {
 }
     
 $(window).load(function(){
-    var opts = {
-        numColumns: 3
-    };
-
+   var opts = {
+      numColumns: 3
+   };
+    
+   
     fitRows( $( '.tiles' ), opts );
-
-    $( window ).on( 'resize', function() {
-        fitRows( $( '.tiles' ), opts );
-    });
+    
+   $( window ).on( 'resize', function() {
+      fitRows( $( '.tiles' ), opts );
+   });
 });
 
 

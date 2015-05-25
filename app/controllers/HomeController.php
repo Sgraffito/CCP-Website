@@ -17,7 +17,15 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('index');
+        $test = DB::table('projects')->where('project_public', 1)->get();
+        $projects = DB::table('projects')
+            ->leftJoin('users', 'users.id', '=', 'projects.user_id')
+            ->where('project_public', 1)
+            ->orderBy('projects.updated_at', 'desc')
+            ->take(3)
+            ->get();
+
+        return View::make('index')->with('exampleWorks', $projects);   
 	}
 
     public function showAbout()

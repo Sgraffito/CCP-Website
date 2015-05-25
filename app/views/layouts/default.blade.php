@@ -16,7 +16,11 @@
 
 
     <!-- Custom CSS -->
-    {{ HTML::style('assets/css/style.css')}}
+    {{ HTML::style('assets/css/style.css') }}
+    
+    <!-- Dropzone CSS -->
+    {{ HTML::style('assets/css/basic.css') }}
+    {{ HTML::style('assets/css/dropzone.css') }}
 
     <!-- Custom Fonts -->
     {{ HTML::style('http://fonts.googleapis.com/css?family=Press+Start+2P') }}
@@ -45,6 +49,9 @@
     
     <!-- Script for embedding Processing -->
     {{ HTML::script('assets/js/processing.min.js') }}
+    
+    <!-- Script for dropzone -->
+    {{ HTML::script('assets/js/dropzone.js') }}
     
     <!-- Latest compiled and minified JavaScript -->
     {{HTML::script('//code.jquery.com/jquery-2.1.1.min.js')}}
